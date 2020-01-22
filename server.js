@@ -32,7 +32,7 @@ mydb.on('error', console.error.bind(console, 'connection error:'));
 app.get('/cosmetcis', function (req, res) {
   CosmeticsItemModel.find({}, (err, items) => {
     if (err) {
-      console.error('ERROR');
+      console.error('ERROR getting * Cosmetcis *');
       return;
     }
 
@@ -47,7 +47,7 @@ app.get('/cosmetcisItem', function (req, res) {
 
   CosmeticsItemModel.findOne({ id }, (err, items) => {
     if (err) {
-      console.error('ERROR');
+      console.error('ERROR  getting * CosmetcisItem *');
       return;
     }
 
