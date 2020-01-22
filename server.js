@@ -15,7 +15,13 @@ const cosmeticsItemSchema = new mongoose.Schema({
 
 const CosmeticsItemModel = mongoose.model('cosmetics_item', cosmeticsItemSchema);
 
-mongoose.connect('mongodb://mamarada.biz:27017/mr', {
+const DB_LOCATION = process.env.DB_LOCATION;
+const DB_PORT = process.env.DB_PORT;
+const DB_NAME = process.env.DB_NAME;
+
+const FRONTEND_URL = process.env.FRONTEND_URL;
+
+mongoose.connect(`${DB_LOCATION}:${DB_PORT}/${DB_NAME}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -31,7 +37,7 @@ app.get('/cosmetcis', function (req, res) {
     }
 
     return res
-      .set({'Access-Control-Allow-Origin': 'http://localhost:8000'})
+      .set({'Access-Control-Allow-Origin': FRONTEND_URL})
       .send(items)
   });
 });
@@ -46,7 +52,7 @@ app.get('/cosmetcisItem', function (req, res) {
     }
 
     return res
-      .set({'Access-Control-Allow-Origin': 'http://localhost:8000'})
+      .set({'Access-Control-Allow-Origin': FRONTEND_URL})
       .send(items)
   });
 });
